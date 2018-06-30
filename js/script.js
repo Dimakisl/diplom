@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', () =>{
+
 //modal Request an engineer
 let popupEngener = document.getElementsByClassName('popup_engineer')[0];
 let popupBtn = document.getElementsByClassName('popup_engineer_btn')[0];
@@ -41,3 +43,4 @@ window.addEventListener('click', (e) =>{
     }
 });
 
+}
