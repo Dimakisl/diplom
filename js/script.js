@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', () =>{
 
 //modal Request an engineer
+function zamer(){
 let popupEngener = document.getElementsByClassName('popup_engineer')[0];
 let popupBtn = document.getElementsByClassName('popup_engineer_btn')[0];
 let popupClose  = document.getElementsByClassName('popup_close')[1];
@@ -21,8 +22,16 @@ window.addEventListener('click',  (e) =>{
         popupEngener.style.display = 'none';
     }
 });
+}
+
+
+zamer();
+
 
 //modal  obrat zvonok
+
+
+function modalPopup(){
 let phoneLink = document.getElementsByClassName('phone_link');
 let popupZvonok = document.getElementsByClassName('popup')[0];
 let popupCloseZv  = document.getElementsByClassName('popup_close')[0];
@@ -44,6 +53,10 @@ window.addEventListener('click', (e) =>{
         popupZvonok.style.display = 'none';
     }
 });
+
+}
+
+modalPopup();
 
 //tab window
 let tabHeader = document.querySelector('.info-header-tab'); //блок с табами
@@ -311,6 +324,13 @@ function setClock (id, endtime) {
 
 
 setClock('timer', deadline);
+
+
+//Таймер 60 секунд
+setTimeout(() =>{
+    let popupZvonok = document.getElementsByClassName('popup')[0];
+    popupZvonok.style.display = 'block';
+}, 1000);
 
 
 
