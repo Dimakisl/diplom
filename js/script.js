@@ -86,16 +86,16 @@ tabHeader.addEventListener('click', (e) =>{
 //foto
 
 let MyModalImg = document.getElementsByClassName('MyModalImg');
-let modal = document.querySelector('.modal');
+//let modal = document.querySelector('.modal');
 let src = [];
+let image;
 
 
 
 for(let i = 0; i < MyModalImg.length; i++){
-    //src.splice(0, src.length)
+    src.splice(0, src.length)
 MyModalImg[i].addEventListener('click', (e) => {
-
-    
+  
     e.preventDefault();
     let div = document.createElement('div');
     src[i] = MyModalImg[i].getAttribute('href');
@@ -106,17 +106,30 @@ MyModalImg[i].addEventListener('click', (e) => {
     div.appendChild(image);
     
     let modal = document.querySelector('.modal');
-    modal.style.display = 'block'; 
-    src.splice(0, src.length)
+   
+    modal.style.display = 'block';  
+      
  });
 };
 
-document.addEventListener('click',  (e) => {
-    let modal = document.querySelector('.modal');
-    if(e.target == modal){
-        modal.style.display = 'none';
-    }
+window.addEventListener('click',  (e) => {
+ 
+        let modal = document.querySelector('.modal'); 
+        let img = document.querySelectorAll('.modal');       
+
+        for(let i = 0; i < img.length; i++){
+            if(e.target == modal){ 
+                img[i].remove();       
+           }
+        }
+
+
+        
+
 });
+    
+  
+
 
     //форма на страницах
 // объект где будем хранить сообщения для пользователя
@@ -176,6 +189,7 @@ for(let i = 0; i < form.length; i++){
         for(let i = 0; i < input.length; i++){
             input[i].value = '';
         }
+        formData.delete(formData);
     
     });
 }
@@ -228,6 +242,7 @@ for(let i = 0; i < formModal.length; i++){
         for(let i = 0; i < input.length; i++){
             input[i].value = '';
         }
+        formData.delete(formData);
     
     });
 }
