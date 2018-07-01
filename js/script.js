@@ -61,9 +61,6 @@ function hideTabContent(){
     }
 };
 
-
-    //hideTabContent(1);
-
 // показываем таб
 function showTabContent(b){
         hideTabContent();
@@ -95,21 +92,22 @@ let src = [];
 
 
 for(let i = 0; i < MyModalImg.length; i++){
-    
+    //src.splice(0, src.length)
 MyModalImg[i].addEventListener('click', (e) => {
 
-    src.splice(0, src.length)
+    
     e.preventDefault();
     let div = document.createElement('div');
     src[i] = MyModalImg[i].getAttribute('href');
     div.className = 'modal';
     let image = document.createElement('img');
-
+    image.src = src[i];
     MyModalImg[i].appendChild(div);
     div.appendChild(image);
-    image.src = src[i];
+    
     let modal = document.querySelector('.modal');
     modal.style.display = 'block'; 
+    src.splice(0, src.length)
  });
 };
 
@@ -120,6 +118,184 @@ document.addEventListener('click',  (e) => {
     }
 });
 
+    //форма на страницах
+// объект где будем хранить сообщения для пользователя
+let message = new Object();
+message.loading = 'Загрузка ...';
+message.success = 'Спасибо! Скоро мы с вами свяжемся!';
+message.failure = 'Что-то пощло не так...';
+
+let form = document.getElementsByClassName('main_form'),
+    
+//делаем div
+    statusMessage = document.createElement('div');
+    statusMessage.classList = 'status'; 
+
+for(let i = 0; i < form.length; i++){
+
+    let input = form[i].getElementsByTagName('input');
+
+    input[1].onkeyup = function (){
+        return this.value = this.value.replace(/[^\d]/g, '');
+
+    }
+
+    form[i].addEventListener('submit', (e) => {
+        e.preventDefault();
+        form[i].appendChild(statusMessage);
+    
+        //AJAX
+        let request = new XMLHttpRequest();
+        //настройка запроса
+        request.open('POST', 'server.php');
+    
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+        let formData = new FormData(form[i]); //объект для хранения данных формы
+    
+        //посылка запроса
+        request.send(formData);
+    
+    request.onreadystatechange = () => {
+            if(request.readyState < 4){
+               statusMessage.innerHTML = message.loading;
+    
+            } else if(request.readyState === 4){
+                if(request.status == 200 && request.status < 300){
+                    statusMessage.innerHTML = message.success;
+                    //Добавляем контент. Прелоадер
+    
+                }
+                else{
+                   statusMessage.innerHTML = message.failure;
+                    }
+                }
+            }
+    
+         //очищяем поля ввода
+        for(let i = 0; i < input.length; i++){
+            input[i].value = '';
+        }
+    
+    });
+}
+
+//форма в модальных окнах
+let formModal = document.getElementsByClassName('form');
+
+for(let i = 0; i < formModal.length; i++){
+
+    let input = formModal[i].getElementsByTagName('input');
+
+    input[1].onkeyup = function (){
+        return this.value = this.value.replace(/[^\d]/g, '');
+
+    }
+
+    formModal[i].addEventListener('submit', (e) => {
+        e.preventDefault();
+        formModal[i].appendChild(statusMessage);
+    
+        //AJAX
+        let request = new XMLHttpRequest();
+        //настройка запроса
+        request.open('POST', 'server.php');
+    
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+        let formData = new FormData(formModal[i]); //объект для хранения данных формы
+    
+        //посылка запроса
+        request.send(formData);
+    
+    request.onreadystatechange = () => {
+            if(request.readyState < 4){
+               statusMessage.innerHTML = message.loading;
+    
+            } else if(request.readyState === 4){
+                if(request.status == 200 && request.status < 300){
+                    statusMessage.innerHTML = message.success;
+                    //Добавляем контент. Прелоадер
+    
+                }
+                else{
+                   statusMessage.innerHTML = message.failure;
+                    }
+                }
+            }
+    
+         //очищяем поля ввода
+        for(let i = 0; i < input.length; i++){
+            input[i].value = '';
+        }
+    
+    });
+}
+
+
+//таймер
+let deadline = '2018-07-04';
+
+function getTimeRemaining(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date()); // разница между конечной датой и текущей в мс.
+    let seconds = Math.floor((t / 1000) % 60); //отсекаем целые минуты и оставляем остаток в секундах
+    let minutes = Math.floor((t / 1000 / 60) % 60); //отсекаем целые часы и получаем остаток в минутах
+    let hours = Math.floor((t/(1000 * 60 * 60))); //отсекаем целые часы и получаем остаток часов
+
+    if(t < 0){
+        seconds = 0;
+        minutes = 0;
+        hours = 0;   
+    }
+
+    if(hours < 10)
+    {
+        hours = "0" + hours; 
+    }
+
+    if(minutes < 10)
+    {
+        minutes = "0" + minutes; 
+    }
+
+    if(seconds < 10)
+    {
+        seconds = "0" + seconds; 
+    }
+
+    return {
+        'total': t,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds,
+    };
+};
+
+function setClock (id, endtime) {
+    let timer = document.getElementById(id),
+        hours = timer.querySelector('.hours'),
+        minutes = timer.querySelector('.minutes'),
+        seconds = timer.querySelector('.seconds');
+    let timerInterval;  //переменная интервала
+        
+        function updateClock() {
+            let t = getTimeRemaining(endtime);
+            hours.innerHTML = t.hours;
+            minutes.innerHTML = t.minutes;
+            seconds.innerHTML = t.seconds;
+
+            if(t.total <= 0){
+                clearInterval(timerInterval);
+             }
+
+        };         
+
+        updateClock();
+        timerInterval = setInterval(updateClock, 1000);
+    };
+
+
+setClock('timer', deadline);
 
 
 

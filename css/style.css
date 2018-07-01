@@ -583,12 +583,13 @@ textarea:focus {
   color: #0089cd;
 }
 .sale_subtitle {
-  margin-bottom: 8rem;
+  margin-bottom: -10rem;
   font-size: 2.4rem;
   line-height: 1.6;
 }
 .sale .eTimer {
   text-align: center;
+  margin-top: -70px;
 }
 /*Contacts*/
 .contacts {
@@ -1486,5 +1487,29 @@ textarea:focus {
 
 
 
+/*таймер*/
+.sale .timer {
+  margin-top: 150px;
+  text-align: center;
+  margin-left: -100px;
+}
+.sale .timer-title {
+  font-size: 36px;
+  color: #c78030;
+}
 
+.sale .timer-numbers {
+  margin-top: 40px;
+  font-size: 50px;
+  color: #c78030;
+}
+.sale .timer-numbers:after {
+  content: '';
+  display: block;
+  width: 20%;
+  height: 1px;
+  background-color: #c78030;
+  margin: 0 auto;
+  margin-top: 4px;
+}
 
