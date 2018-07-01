@@ -523,7 +523,7 @@ textarea:focus {
   transition: ease 0.2s;
 }
 .works a[data-fancybox="gallery"]:hover .lupa {
-  opacity: 1;
+  opacity: 0.6;
 }
 /*Guarantees*/
 .guarantees {
@@ -1468,3 +1468,23 @@ textarea:focus {
     animation: none !important;
   }
 }
+
+
+.modal{
+	display: none;
+	position: fixed;
+  z-index: 1;
+  padding-top: 5%;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0);
+	background-color: rgba(0, 0, 0, .9);
+}
+
+
+
+
+
