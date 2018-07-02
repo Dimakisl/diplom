@@ -1513,3 +1513,14 @@ textarea:focus {
   margin-top: 4px;
 }
 
+
+/*tabs*/
+.hide {
+  display: none;
+}
+.show {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: block;
+}

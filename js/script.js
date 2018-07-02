@@ -70,7 +70,7 @@ let tabContent = document.getElementsByClassName('info-tabcontent'); //конт�
 function hideTabContent(){
     for(let i = 0; i < tab.length; i++){
         tabContent[i].style.display = 'none';    
-        tabA[i].classList.remove('active');
+        tabA[i+2].classList.remove('active');
     }
 };
 
@@ -83,13 +83,13 @@ function showTabContent(b){
 }
 
 tabHeader.addEventListener('click', (e) =>{
+    e.preventDefault();
     let target = e.target;
 
         for(let i = 0; i < tab.length; i++){   
             if(target == tab[i]){
-                tabA[i].classList.add('active');
                 showTabContent(i);
-   
+                tabA[i+2].classList.add('active');
                 break;
            }
         }
@@ -134,15 +134,49 @@ window.addEventListener('click',  (e) => {
             if(e.target == modal){ 
                 img[i].remove();       
            }
-        }
-
-
-        
-
+        }    
 });
-    
-  
 
+//tab otdelka
+let tabHeadero = document.querySelector('.info-header-tab_o'); //блок с табами
+let tabo = document.getElementsByClassName('tab_o');//таб на которые щелкнули
+//let tabAo = document.getElementsByTagName('after_click');
+let tabContento = document.getElementsByClassName('info-tabcontent_o'); //контент таба
+
+
+
+//скрываем табы
+function hideTabContento(){
+    for(let i = 0; i < tabo.length; i++){
+        tabContento[i].style.display = 'none';    
+        tabo[i].classList.remove('after_click');
+    }
+};
+
+// показываем таб
+function showTabContento(b){
+        hideTabContento();
+        tabContento[b].style.display = 'none';
+        tabContento[b].style.display = 'block';                
+}
+
+tabHeadero.addEventListener('click', (e) =>{
+    e.preventDefault();
+    let target = e.target;
+        for(let i = 0; i < tabo.length; i++){  
+           
+            if(target == tabo[i]){
+                
+                showTabContento(i);
+                tabo[i].classList.add('after_click');
+                break;
+           }
+        
+        }
+    
+    
+        
+});
 
     //форма на страницах
 // объект где будем хранить сообщения для пользователя
