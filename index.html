@@ -877,26 +877,26 @@
 
     <!-- Calculator -->
    <div class="popup_calc">
-        <div class="popup_dialog">
+        <div class="popup_dialog ">
             <div class="popup_calc_content text-center">
                 <button type="button" class="popup_calc_close"><strong>&times;</strong></button>
                  <h2>Калькулятор</h2>
                 <h3>Выберите форму балкона <br>и укажите размеры</h3>
-               <div class="balcon_icons">
-                 <a href="#" class="type1">
-                   <img src="img/modal_calc/balkon/ba_01.png" alt="Тип1" class="type1_img"></a>
+               <div class="balcon_icons info-header-tab_w">
+                 <a href="#" class="type1 ">
+                   <img src="img/modal_calc/balkon/ba_01.png" alt="Тип1" class="type1_img tab_w" data-view="Вид 1"></a>
                  <a href="#" class="type2">
-                   <img src="img/modal_calc/balkon/ba_02.png" alt="Тип2" class="type2_img"></a>
+                   <img src="img/modal_calc/balkon/ba_02.png" alt="Тип2" class="type2_img tab_w" data-view="Вид 2"></a>
                  <a href="#" class="type3">
-                   <img src="img/modal_calc/balkon/ba_03.png" alt="Тип3" class="type3_img"></a>
+                   <img src="img/modal_calc/balkon/ba_03.png" alt="Тип3" class="type3_img tab_w" data-view="Вид 3"></a>
                  <a href="#" class="type4"> 
-                   <img src="img/modal_calc/balkon/ba_04.png" alt="Тип4" class="type4_img"></a>
+                   <img src="img/modal_calc/balkon/ba_04.png" alt="Тип4" class="type4_img tab_w" data-view="Вид 4"></a>
                </div>
                 <div class="big_img text-center">
-                  <img src="img/modal_calc/balkon/type1.png" alt="" id="type1">
-                  <img src="img/modal_calc/balkon/type2.png" alt="" id="type2">
-                  <img src="img/modal_calc/balkon/type3.png" alt="" id="type3">
-                  <img src="img/modal_calc/balkon/type4.png" alt="" id="type4">
+                  <img src="img/modal_calc/balkon/type1.png" alt="" id="type1" class="info-tabcontent_w">
+                  <img src="img/modal_calc/balkon/type2.png" alt="" id="type2" class="info-tabcontent_w">
+                  <img src="img/modal_calc/balkon/type3.png" alt="" id="type3" class="info-tabcontent_w">
+                  <img src="img/modal_calc/balkon/type4.png" alt="" id="type4" class="info-tabcontent_w">
                 </div>
                 <input class="form-control" id="width" type="text" placeholder="Ширина" required>
                 <label for="width">мм</label>
@@ -923,13 +923,13 @@
                  </select>
                  <img src="img/modal_calc/icon_cold.png" alt="">
                  <label>
-                     <input class="checkbox" type="checkbox" name="checkbox-test">
+                     <input class="checkbox" type="checkbox" name="checkbox-test" value="Холодное">
                      <span class="checkbox-custom" id="cold"></span>
                      <span class="label">Холодное</span>
                  </label>
                  <img src="img/modal_calc/icon_warm.png" alt="">
                  <label>
-                     <input class="checkbox" type="checkbox" name="checkbox-test">
+                     <input class="checkbox" type="checkbox" name="checkbox-test" value="Теплое">
                      <span class="checkbox-custom" id="warm"></span>
                      <span class="label">Теплое</span>
                  </label>
