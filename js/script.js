@@ -86,19 +86,23 @@ let tabContent = document.getElementsByClassName('info-tabcontent'); //конт�
 
 
 //скрываем табы
-function hideTabContent(){
-    for(let i = 0; i < tab.length; i++){
-        tabContent[i].style.display = 'none';    
-        tabA[i+2].classList.remove('active');
+function hideTabContent(a){
+    for(let i = a; i < tabContent.length; i++){   
+        tabContent[i].classList.remove('show');
+        tabContent[i].classList.add('hide');
+        tabA[i+1].classList.remove('active');
     }
 };
 
+hideTabContent(1);
+
 // показываем таб
 function showTabContent(b){
-        hideTabContent();
-        tabContent[b].style.display = 'none';
-        tabContent[b].style.display = 'block';     
-                  
+    if(tabContent[b].classList.contains('hide')){
+        hideTabContent(0);
+        tabContent[b].classList.remove('hide');
+        tabContent[b].classList.add('show');
+    }         
 }
 
 tabHeader.addEventListener('click', (e) =>{
@@ -106,13 +110,12 @@ tabHeader.addEventListener('click', (e) =>{
     let target = e.target;
 
         for(let i = 0; i < tab.length; i++){   
-            if(target == tab[i]){
+            if(target.parentNode == tab[i]){
                 showTabContent(i);
                 tabA[i+2].classList.add('active');
                 break;
            }
-        }
-        
+        }    
 });
 
 //foto
@@ -137,10 +140,8 @@ MyModalImg[i].addEventListener('click', (e) => {
     MyModalImg[i].appendChild(div);
     div.appendChild(image);
     
-    let modal = document.querySelector('.modal');
-   
-    modal.style.display = 'block';  
-      
+    let modal = document.querySelector('.modal'); 
+    modal.style.display = 'block';       
  });
 };
 
@@ -159,7 +160,6 @@ window.addEventListener('click',  (e) => {
 //tab otdelka
 let tabHeadero = document.querySelector('.info-header-tab_o'); //блок с табами
 let tabo = document.getElementsByClassName('tab_o');//таб на которые щелкнули
-//let tabAo = document.getElementsByTagName('after_click');
 let tabContento = document.getElementsByClassName('info-tabcontent_o'); //контент таба
 
 
@@ -184,7 +184,7 @@ tabHeadero.addEventListener('click', (e) =>{
     let target = e.target;
         for(let i = 0; i < tabo.length; i++){  
            
-            if(target == tabo[i]){
+            if(target.parentNode == tabo[i]){
                 
                 showTabContento(i);
                 tabo[i].classList.add('after_click');
@@ -419,6 +419,7 @@ function hideTabContentw(a){
 
         tabContentw[i].classList.remove('show');
         tabContentw[i].classList.add('hide');
+        
 
     }
 };
@@ -430,14 +431,25 @@ function showTabContentw(b){
         hideTabContentw(0);
         tabContentw[b].classList.remove('hide');
         tabContentw[b].classList.add('show');
+        if( b + 1 >= tab.length-1){
+
+        tabw[b-1].style.transform = 'none';
+        }else{
+        tabw[b+1].style.transform = 'none';
+        }
+
+        
     }
 }
 
 tabHeaderw.addEventListener('click', function(e){
+    
     e.preventDefault();
     let target = e.target;
         for(let i = 0; i < tabw.length; i++){
+            tabw[i].style.transform = 'none';
             if(target == tabw[i]){
+                tabw[i].style.transform = 'scale(1.5)';
                 showTabContentw(i);
                 answer.view = tabw[i].getAttribute('data-view');
                 break;
@@ -493,7 +505,7 @@ calcNext.addEventListener('click', () =>{
 
 
 calcNextEnd.addEventListener('click', () => {
-    alert( `Ширина:  + ${answer.width} высота: ${answer.height} Условия: ${answer.condition} и типа: ${answer.view}`);
+    alert( `Ширина: ${answer.width} высота: ${answer.height} Условия: ${answer.condition} и типа: ${answer.view}`);
     calcNextProfile.style.display = 'none';
     calcEnd.style.display = 'block';
     
