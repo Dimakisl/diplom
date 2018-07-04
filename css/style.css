@@ -1528,3 +1528,8 @@ textarea:focus {
 .popup_calc_profile_button[disabled]{
   background: grey !important;
 }
+
+.scale{
+  transform: scale(1.5);
+}
+
