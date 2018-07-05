@@ -134,7 +134,6 @@
                 });
 
                 calcNextEnd.addEventListener('click', function () {
-                    alert("\u0428\u0438\u0440\u0438\u043D\u0430: " + answer.width + " \u0432\u044B\u0441\u043E\u0442\u0430: " + answer.height + " \u0423\u0441\u043B\u043E\u0432\u0438\u044F: " + answer.condition + " \u0438 \u0442\u0438\u043F\u0430: " + answer.view);
                     calcNextProfile.style.display = 'none';
                     calcEnd.style.display = 'block';
                 });
