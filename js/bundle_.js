@@ -34,6 +34,7 @@
             var view = void 0; //храним вид балкона
 
 
+
             for (var i = 0; i < calcBtn.length; i++) {
                 calcBtn[i].addEventListener('click', calc);
             };
@@ -164,7 +165,7 @@
             //форма в модальных окнах
 
             //делаем div
-          var  statusMessage = document.createElement('div');
+           var statusMessage = document.createElement('div');
             statusMessage.classList = 'status';
 
             var formModal = document.getElementsByClassName('form');
@@ -229,11 +230,11 @@
             message.success = 'Спасибо! Скоро мы с вами свяжемся!';
             message.failure = 'Что-то пошло не так...';
 
-            var form = document.getElementsByClassName('main_form'),
+            var form = document.getElementsByClassName('main_form');
 
 
             //делаем div
-            statusMessage = document.createElement('div');
+            var statusMessage = document.createElement('div');
             statusMessage.classList = 'status';
 
             var _loop2 = function _loop2(i) {
@@ -317,7 +318,7 @@
             };
 
             window.addEventListener('click', function (e) {
-                e.preventDefault();
+
                 var modal = document.querySelector('.modal');
                 var img = document.querySelectorAll('.modal');
 
